@@ -1,0 +1,36 @@
+{%  extends "html/standar.html" %}
+
+{% block content %}
+<style media="screen">
+  .hhh{
+    margin: 5%;
+    padding: 2%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+  }
+</style>
+<h1>Hello, world!</h1>
+{% for ville in list_ville %}
+<div class="hhh">
+  {% for obj in ANNONCE_DEMANDE %}
+  {% if obj.ville == ville %}
+  <div class="card" style="width: 18rem;">
+    <img src="{{obj.compte.image_profile.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{obj.compte}}</h5>
+      <p class="card-text">{{obj.num_tele}}</p>
+      <p class="card-text">{{obj.bagages}}</p>
+      <p class="card-text">{{obj.ville}}</p>
+      <p class="card-text">{{obj.comment}}</p>
+      <p class="card-text">{{obj.get_created_time}}</p>
+      <p class="card-text">{{obj.get_updated_time}}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

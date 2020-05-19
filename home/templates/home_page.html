@@ -1,0 +1,43 @@
+{%  extends "html/standar.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-6" style="width: 18rem;">
+    <img src="{% static "images/gg.jpg" %}" size="50x50"class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-text">get ride</h5>
+      <p class="card-text">travel safty and feel free</p>
+      <a href="{% url "AD" %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="col-sm-6" style="width: 18rem;">
+    <img src="{% static "images/tt.jpg" %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-text">livraison</h5>
+      <p class="card-text">travel safty and feel free</p>
+      <a href="{% url "L" %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6" style="width: 18rem;">
+    <img src="{% static "images/yy.jpg" %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-text">transport city</h5>
+      <p class="card-text">travel safty and feel free</p>
+      <a href="{% url "AV" %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="col-sm-6" style="width: 18rem;">
+    <img src="{% static "images/oo.jpg" %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-text">share d road</h5>
+      <p class="card-text">travel safty and feel free</p>
+      <a href="{% url "AO" %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
