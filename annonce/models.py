@@ -3,6 +3,8 @@ from user.models import compte
 from django.core.exceptions import ValidationError
 from enum import  Enum
 
+from django.conf import settings
+
 # Create your models here.
 
 
@@ -42,24 +44,38 @@ def validate_num(value):
     else:
         return 'value'
 
+#def validate_lieu(self): not corrected yet
+#    try:
+#        annonce = annonce.self.ville
+#    except Exception as e:
+#        raise
+#    if self.lieu_depart == self.lieu_arrive:
+#        raise ValidationError("u sob, u joking right, we r joking now...ha!!")
+#    #
+
+
+#def validate_date(self):  get corrected by me
+#    if self.cleaned_data.get("date_depart").day == self.cleaned_data.get("date_arrive").day:
+#        if self.cleaned_data.get("date_depart").hour == self.cleaned_data.get("date_arrive").hour:
+#            raise ValidationError("u sob, u joking right, we r joking now...ha!!")
+
+
+
+
+
+
+
 class fiche_annonce(models.Model):
 
 
-    def validate_lieu():
-        if self.lieu_depart == self.lieu_arrive:
-            raise ValidationError("u sob, u joking right, we r joking now...ha!!")
 
-    def validate_date():
-        if self.date_depart.day == self.date_arrive.day:
-            if self.date_depart.hour == self.date_arrive.hour:
-                raise ValidationError("u sob, u joking right, we r joking now...ha!!")
 
     ville_distination = models.CharField(max_length=50)
-    lieu_depart = models.CharField(max_length=50, validators=[validate_lieu])
-    lieu_arrive = models.CharField(max_length=50, validators=[validate_lieu])
-    date_depart = models.DateTimeField(max_length=50, validators=[validate_date])
-    date_arrive = models.DateTimeField(max_length=50, validators=[validate_date])
-    is_accepted = models.BooleanField(default=False)
+    lieu_depart = models.CharField(max_length=50)
+    lieu_arrive = models.CharField(max_length=50)
+    date_depart = models.DateTimeField(max_length=50,)
+    date_arrive = models.DateTimeField(max_length=50)
+    is_accepted = False
     visiblty = False
 
 
@@ -75,12 +91,12 @@ class fiche_annonce(models.Model):
 
 class annonce(models.Model):
 
-    def validate_tele(value):
-        if len(value)<=10:
-            raise ValidationError("really nigga, thts ur phone!!")
+    #def validate_tele(value):
+    #    if len(value)<=10:
+    #        raise ValidationError("really nigga, thts ur phone!!")
 
-    compte = models.ForeignKey(compte, on_delete=models.CASCADE)
-    num_tele = models.IntegerField(validators=[validate_tele])
+    compte = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    num_tele = models.IntegerField()
     ville = models.CharField(max_length=30)
     bagages = models.CharField(max_length=12, choices=[x.value for x in type_bagages])
     comment = models.TextField(max_length=200)

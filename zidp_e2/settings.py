@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'annonce',
     'home',
 
+
+    'rest_framework.authtoken',
     'rest_framework',
     'materialize',
 ]
@@ -61,6 +63,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'zidp_e2.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+
+    'DEFAULT_PERMISSOIN_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+}
 
 TEMPLATES = [
     {
@@ -81,6 +93,13 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
+
+
+AUTH_USER_MODEL = 'user.compte'
 
 WSGI_APPLICATION = 'zidp_e2.wsgi.application'
 
